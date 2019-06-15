@@ -1,0 +1,64 @@
+Resources:
+    dynamodbDevices:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: device_id
+            AttributeType: S
+          -
+            AttributeName: Version
+            AttributeType: S
+          - 
+            AttributeName: employee_id
+            AttributeType: S
+
+        KeySchema:
+          -
+            AttributeName: device_id
+            KeyType: HASH
+          -
+            AttributeName: Version
+            KeyType: RANGE
+            
+
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+        TableName: "devices"
+        GlobalSecondaryIndexes: 
+        - 
+          IndexName: "SecondIndex"
+          KeySchema: 
+            - 
+              AttributeName: "employee_id"
+              KeyType: "HASH"
+
+          Projection: 
+            NonKeyAttributes: 
+              - "device_id"
+            ProjectionType: "INCLUDE"
+              
+          ProvisionedThroughput: 
+            ReadCapacityUnits: "1"
+            WriteCapacityUnits: "1"
+
+    dynamodbManagers:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: manager_id
+            AttributeType: S
+         
+        KeySchema:
+          -
+            AttributeName: manager_id
+            KeyType: HASH
+
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+        TableName: "managers"
