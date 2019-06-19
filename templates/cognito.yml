@@ -4,6 +4,8 @@
       Type: AWS::Cognito::UserPool
       Properties:
         UserPoolName: cognito_sls_backend_user_pool
+        AutoVerifiedAttributes:
+          - email
         Schema:
           - Name: name
             AttributeDataType: String

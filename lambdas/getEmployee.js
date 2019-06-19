@@ -9,7 +9,7 @@ module.exports.getEmployee = async (event) =>{
     Key: {
     "manager_id": {
       S: event.queryStringParameters.manager_id
-      }, 
+      },
     },
     TableName: "managers"
   };

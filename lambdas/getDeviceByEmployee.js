@@ -4,7 +4,8 @@ const AWS = require("aws-sdk");
 var docClient = new AWS.DynamoDB.DocumentClient();
 
 module.exports.getDeviceByEmployee = async (event) =>{
-  
+
+ /* 
     var result="";
     var params = {
       TableName : "devices",
@@ -38,4 +39,7 @@ module.exports.getDeviceByEmployee = async (event) =>{
           });
     });
   });
+  */
+
+
   }
